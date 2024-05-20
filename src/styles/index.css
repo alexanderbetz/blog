@@ -37,6 +37,10 @@
     color: hsl(var(--color))
   }
 
+  /*
+  typography thanks to
+  https://maketypework.com/web-typography-baseline-grids-made-easy/
+   */
   body, body.palette-1 {
     --head-fonts: sans-serif;
     --body-fonts: serif;

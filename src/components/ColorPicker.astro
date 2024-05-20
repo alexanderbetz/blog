@@ -5,21 +5,24 @@
 <input type="range" min="0" max="359" step="1" id="color-picker-input" class="color-picker" />
 
 <script>
-    const pickerInput = document.querySelector('#color-picker-input')
-    const root = document.querySelector(':root')
-    root.style.setProperty('--hue', localStorage.getItem('hue') || '232deg')
-    const hueInt = parseInt(root.style.getPropertyValue('--hue'))
-    pickerInput.value = hueInt
+    const pickerInput: HTMLInputElement | null = document.querySelector('#color-picker-input')
+    const root: HTMLElement | null = document.querySelector(':root')
+    root?.style.setProperty('--hue', localStorage.getItem('hue') || '232deg')
+    const hueInt = parseInt(root?.style.getPropertyValue('--hue') ?? '232')
+    if (pickerInput) {
+        pickerInput.value = hueInt.toString()
+    }
 
-    let latestAnimationFrame = null
+    let latestAnimationFrame: number | null = null
 
-    pickerInput.addEventListener('input', (e) => {
+    pickerInput?.addEventListener('input', (e) => {
         if (latestAnimationFrame) {
             window.cancelAnimationFrame(latestAnimationFrame)
         }
         latestAnimationFrame = window.requestAnimationFrame(() => {
+            // @ts-ignore
             const hue = e.target.value + 'deg'
-            root.style.setProperty('--hue', hue)
+            root?.style.setProperty('--hue', hue)
             localStorage.setItem('hue', hue)
             latestAnimationFrame = null
         })

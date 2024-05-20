@@ -2,7 +2,7 @@
 
 ---
 
-<input type="range" min="0" max="359" step="1" id="color-picker-input" />
+<input type="range" min="0" max="359" step="1" id="color-picker-input" class="color-picker" />
 
 <script>
     const pickerInput = document.querySelector('#color-picker-input')
@@ -11,9 +11,17 @@
     const hueInt = parseInt(root.style.getPropertyValue('--hue'))
     pickerInput.value = hueInt
 
+    let latestAnimationFrame = null
+
     pickerInput.addEventListener('input', (e) => {
-        const hue = e.target.value + 'deg'
-        root.style.setProperty('--hue', hue)
-        localStorage.setItem('hue', hue)
+        if (latestAnimationFrame) {
+            window.cancelAnimationFrame(latestAnimationFrame)
+        }
+        latestAnimationFrame = window.requestAnimationFrame(() => {
+            const hue = e.target.value + 'deg'
+            root.style.setProperty('--hue', hue)
+            localStorage.setItem('hue', hue)
+            latestAnimationFrame = null
+        })
     })
 </script>

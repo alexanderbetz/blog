@@ -9,7 +9,8 @@ Here is a sample of some basic Markdown syntax that can be used when writing Mar
 
 ## Headings
 
-The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
+The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the
+lowest.
 
 # H1
 
@@ -25,7 +26,12 @@ The following HTML `<h1>`—`<h6>` elements represent six levels of section head
 
 ## Paragraph
 
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui
+voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum
+rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am
+facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda
+veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer
+sperchicium faceata tiustia prat.
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
@@ -43,7 +49,8 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ## Blockquotes
 
-The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
+The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer`
+or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
 
 ### Blockquote without attribution
 
@@ -75,55 +82,120 @@ The blockquote element represents content that is quoted from another source, op
 
 [^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
-## Tables
-
-### Syntax
-
-```markdown
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
-```
-
-### Output
-
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
-
 ## Code Blocks
 
 ### Syntax
 
-we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntax, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
+we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntax,
+write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
 
 ````markdown
-```html
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
     <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>MDN Web Docs Example: Toggling full-screen mode</title>
+    <link rel="stylesheet" href="styles.css">
+    <style class="editable">
+        video::backdrop {
+          background-color: #448;
+        }
+    </style>
+
+    <!-- import the webpage's javascript file -->
+    <script src="script.js" defer></script>
+
   </head>
   <body>
-    <p>Test</p>
+    <section class="preview">
+      <video controls
+        src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+        poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+        width="620">
+
+        Sorry, your browser doesn't support embedded videos.  Time to upgrade!
+
+      </video>
+    </section>
+
+<textarea class="playable playable-css" style="height: 100px;">
+video::backdrop {
+  background-color: #448;
+}
+</textarea>
+
+<textarea class="playable playable-html" style="height: 200px;">
+<video controls
+  src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+  poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+  width="620">
+Sorry, your browser doesn't support embedded videos.  Time to upgrade!
+</video>
+</textarea>
+
+    <div class="playable-buttons">
+        <input id="reset" type="button" value="Reset" />
+      </div>
+    </body>
+    <script src="playable.js"></script>
+
   </body>
 </html>
-```
 ````
 
 ### Output
 
 ```html
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
     <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
+    <meta name="viewport" content="width=device-width" />
+    <title>MDN Web Docs Example: Toggling full-screen mode</title>
+    <link rel="stylesheet" href="styles.css">
+    <style class="editable">
+        video::backdrop {
+            background-color: #448;
+        }
+    </style>
+
+    <!-- import the webpage's javascript file -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section class="preview">
+        <video
+            controls
+            src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+            poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+            width="620">
+
+            Sorry, your browser doesn't support embedded videos. Time to upgrade!
+
+        </video>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 100px;">
+        video::backdrop {
+          background-color: #448;
+        }
+    </textarea>
+
+    <textarea class="playable playable-html" style="height: 200px;">
+<video controls
+  src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+  poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+  width="620">
+Sorry, your browser doesn't support embedded videos.  Time to upgrade!
+</video>
+</textarea>
+
+    <div class="playable-buttons">
+        <input id="reset" type="button" value="Reset" />
+    </div>
+    <script src="playable.js"></script>
+</body>
 </html>
 ```
 
@@ -167,23 +239,23 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 
 ```markdown
 - Fruit
-  - Apple
-  - Orange
-  - Banana
+    - Apple
+    - Orange
+    - Banana
 - Dairy
-  - Milk
-  - Cheese
+    - Milk
+    - Cheese
 ```
 
 #### Output
 
 - Fruit
-  - Apple
-  - Orange
-  - Banana
+    - Apple
+    - Orange
+    - Banana
 - Dairy
-  - Milk
-  - Cheese
+    - Milk
+    - Cheese
 
 ## Other Elements — abbr, sub, sup, kbd, mark
 

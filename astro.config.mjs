@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind'
 export default defineConfig({
     markdown: {
         shikiConfig: {
-            theme: 'css-variables'
+            theme: 'github-light'
         }
     },
     site: 'https://alexanderbetz.com',

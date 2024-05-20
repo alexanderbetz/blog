@@ -2,10 +2,13 @@
 const today = new Date()
 ---
 
-<footer class="max-w-[600px] mx-auto">
-    <p class="text-center">&copy; {today.getFullYear()} Alexander Betz. All rights reserved.</p>
+<footer class="max-w-[600px] mx-auto pt-[calc(4_*_16px)]">
+    <p class="text-center">
+        &copy; {today.getFullYear()} Alexander Betz. All rights reserved.
+        <a href="/imprint">Imprint</a>
+    </p>
 
-    <div class="flex justify-center gap-4 mt-[var(--tile-size)] pt-1">
+    <div class="flex justify-center gap-4 mt-1 pt-1">
         <a href="https://twitter.com/astrodotbuild" target="_blank" class="text-decoration-none">
             <span class="sr-only">Follow Alexander Betz on Twitter</span>
             <svg
@@ -26,9 +29,3 @@ const today = new Date()
         </a>
     </div>
 </footer>
-
-<style>
-  footer {
-    padding: calc(var(--tile-size) * 2) 0;
-  }
-</style>

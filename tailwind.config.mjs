@@ -4,9 +4,6 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 export default {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     theme: {
-        fontSize: {
-            base: ['var(--font-size)', 'var(--line-height)']
-        },
         extend: {
             colors: {
                 primary: 'hsl(var(--color) / <alpha-value>)'

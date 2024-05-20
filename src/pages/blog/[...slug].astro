@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
+import FormattedDate from '../../components/FormattedDate.astro'
 import BlogPost from '../../layouts/BaseLayout.astro'
 
 export async function getStaticPaths() {
@@ -16,7 +17,11 @@ const { Content } = await post.render()
 ---
 
 <BlogPost {...post.data}>
-    <div class="flex flex-col">
-        <Content />
-    </div>
+    <a href="/"><p>Go Back</p></a>
+    <h1>{post.data.title}</h1>
+    <p class="italic">
+        <FormattedDate date={post.data.pubDate}></FormattedDate>
+    </p>
+
+    <Content />
 </BlogPost>

@@ -1,0 +1,19 @@
+---
+
+---
+
+<input type="range" min="0" max="359" step="1" id="color-picker-input" />
+
+<script>
+    const pickerInput = document.querySelector('#color-picker-input')
+    const root = document.querySelector(':root')
+    root.style.setProperty('--hue', localStorage.getItem('hue') || '232deg')
+    const hueInt = parseInt(root.style.getPropertyValue('--hue'))
+    pickerInput.value = hueInt
+
+    pickerInput.addEventListener('input', (e) => {
+        const hue = e.target.value + 'deg'
+        root.style.setProperty('--hue', hue)
+        localStorage.setItem('hue', hue)
+    })
+</script>

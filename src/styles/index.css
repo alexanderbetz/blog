@@ -317,15 +317,23 @@
     background-color: hsl(var(--color));
     border-radius: 50%;
     border: 2px solid #eeeeee;
+    box-shadow: none;
   }
 
   /* Thumb: Firefox */
   /* prettier-ignore */
   input[type='range'].color-picker::-moz-range-thumb {
-    height: 15px;
-    width: 15px;
-    background-color: #ffffff;
+    /* removing default appearance */
+    -moz-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    position: relative;
+    top: -7.5px;
+    height: 30px;
+    width: 30px;
+    background-color: hsl(var(--color));
     border-radius: 50%;
-    border: 1px solid #ff5500;
+    border: 2px solid #eeeeee;
+    box-shadow: none;
   }
 }

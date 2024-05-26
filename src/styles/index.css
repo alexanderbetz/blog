@@ -6,18 +6,6 @@
   :root {
     --hue: 0deg;
     --color: var(--hue) 78% 40%;
-
-    --astro-code-color-text: #24292e;
-    --astro-code-color-background: #ffffff;
-    --astro-code-token-constant: #005cc5;
-    --astro-code-token-string: #770000;
-    --astro-code-token-comment: #6a737d;
-    --astro-code-token-keyword: #24292e;
-    --astro-code-token-parameter: #aa0000;
-    --astro-code-token-function: #6f42c1;
-    --astro-code-token-string-expression: #22863a;
-    --astro-code-token-punctuation: #dd0000;
-    --astro-code-token-link: #ee0000;
   }
 
   body {
@@ -27,13 +15,14 @@
         #eeeeee 1px,
         transparent 1px,
         transparent 1rem
-    ), repeating-linear-gradient(
-        90deg,
-        #eeeeee,
-        #eeeeee 1px,
-        transparent 1px,
-        transparent 1rem
     );
+    /*, repeating-linear-gradient(
+        /*    90deg,*/
+    /*    #eeeeee,*/
+    /*    #eeeeee 1px,*/
+    /*    transparent 1px,*/
+    /*    transparent 1rem*/
+    /*);*/
     color: hsl(var(--color))
   }
 
@@ -131,8 +120,8 @@
   }
 
   pre {
-    background-color: rgba(245, 245, 215, 0.5);
     display: block;
+    line-height: 1rem;
     margin-bottom: 2rem;
     margin-top: 1rem;
     padding: 1rem;
@@ -146,6 +135,14 @@
     line-height: 1rem;
   }
 
+  kbd {
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    color: black;
+    font-size: 1rem;
+    padding: 2px 4px;
+  }
+
   blockquote {
 
     p {
@@ -157,6 +154,14 @@
     }
   }
 
+  abbr {
+    cursor: help;
+  }
+
+  h4 + blockquote, h5 + blockquote, h6 + blockquote {
+    margin-top: 1rem;
+  }
+
   b, strong {
     font-weight: 700;
   }
@@ -166,15 +171,18 @@
   }
 
   ul, ol {
-
     li {
-
       ol, ul {
         padding-top: 1rem;
         margin-bottom: 1rem;
         margin-left: 2rem;
       }
     }
+  }
+
+  /* footnotes fix */
+  li p:first-child {
+    padding-top: 0;
   }
 
   ul {
@@ -199,15 +207,12 @@
       }
 
       ul {
-
         li {
-
           &:before {
             content: '';
           }
 
           ol {
-
             li {
               counter-increment: alt-level;
 
@@ -220,7 +225,6 @@
       }
 
       ol {
-
         li {
           counter-increment: sub-level;
 
@@ -229,9 +233,7 @@
           }
 
           ul {
-
             li {
-
               &:before {
                 content: '';
               }
@@ -239,7 +241,6 @@
           }
 
           ol {
-
             li {
               counter-increment: sub-sub-level;
 
@@ -264,7 +265,7 @@
     padding-top: 3rem;
   }
 
-  a:hover {
+  a {
     text-decoration: underline;
   }
 

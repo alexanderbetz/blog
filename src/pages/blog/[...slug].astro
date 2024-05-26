@@ -19,9 +19,14 @@ const { Content } = await post.render()
 <BlogPost {...post.data}>
     <a href="/"><p>Go Back</p></a>
     <h1>{post.data.title}</h1>
-    <p class="italic">
+    <p>
+        <span class="italic">
         <FormattedDate date={post.data.pubDate}></FormattedDate>
+            </span>
+        {post.data.readTime && <span>- {post.data.readTime}</span>}
     </p>
 
-    <Content />
+    <div class="flex flex-col [&_img]:hidden">
+        <Content />
+    </div>
 </BlogPost>

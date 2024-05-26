@@ -2,21 +2,17 @@ import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
+import { githubLight } from './src/mdx-theme'
 
 // https://astro.build/config
 export default defineConfig({
     markdown: {
         shikiConfig: {
-            theme: 'github-light'
+            theme: githubLight
         }
     },
     site: 'https://alexanderbetz.com',
     integrations: [
-        mdx({
-            syntaxHighlight: 'shiki',
-            shikiConfig: {
-                theme: 'css-variables'
-            }
-        }), sitemap(), tailwind({ applyBaseStyles: false })
+        mdx(), sitemap(), tailwind({ applyBaseStyles: false })
     ]
 })

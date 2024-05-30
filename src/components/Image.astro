@@ -20,10 +20,12 @@ if (!props.alt) {
             super()
             const img = this.querySelector('img')
 
-            img.addEventListener('load', (e) => {
-                img.style.setProperty('--img-aspect-ratio', (img.naturalWidth / img.naturalHeight).toString())
+            img?.addEventListener('load', () => {
+                img?.style.setProperty('--img-aspect-ratio', (img.naturalWidth / img.naturalHeight).toString())
             })
-            img.style.setProperty('--img-aspect-ratio', (img.naturalWidth / img.naturalHeight).toString())
+            if (img) {
+                img.style.setProperty('--img-aspect-ratio', (img.naturalWidth / img.naturalHeight).toString())
+            }
         }
     }
 

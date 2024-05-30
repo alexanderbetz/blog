@@ -6,7 +6,10 @@ pubDate: 'May 30 2024'
 readTime: '4 minutes'
 ---
 
-import Image from '../../components/Image.astro'
+
+import Image from '../../components/AstroImage.astro'
+import designInspirationImage from '../../images/design-inspiration.jpg'
+import responsiveImage from '../../images/responsive-image.gif'
 
 I already had with 2 things in mind:
 
@@ -18,9 +21,9 @@ When I find myself daydreaming about a design, I almost always try to find somet
 This way I make sure I don't forget what I previously imagined. This time I looked up *clean* and *minimal* creations and after scrolling a
 while I eventually found inspiration.
 
-<Image src="/design-inspiration.jpg" alt="Design inspiration by Jordan Hughes"></Image>
+<Image src={designInspirationImage} alt="Design inspiration by Jordan Hughes"></Image>
 
-[Jordan Hughes](https://dribbble.com/shots/20860486-Minimal-blog-post-Untitled-UI), if you ever read this: Thank you!.
+[Jordan Hughes](https://dribbble.com/shots/20860486-Minimal-blog-post-Untitled-UI), if you ever read this: Thank you!
 
 After recognizing the whole design consists of only one color and its shades, I immediately had in mind that anyone should be able to select
 their color of choice. Funny enough, the color picker was the first thing I finished, even before I knew of the heavy use of typography.
@@ -73,6 +76,6 @@ remaining space to fill a full line. This even enables **responsive images**. Ho
 
 Here you have a quick demonstration of what's going on.
 
-<Image src="/responsive-image.gif" alt="response image explanation"></Image>
+<Image src={responsiveImage} alt="response image explanation"></Image>
 
 I am quite happy with the result, since this image handling expresses the attention to detail even better.

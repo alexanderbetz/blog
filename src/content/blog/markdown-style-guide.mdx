@@ -42,7 +42,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 ### Syntax
 
 ```tsx
-import Image from '../../components/Image.astro';
+import Image from '../../components/AstroImage.astro';
 
 <Image src="/blog-placeholder-about.jpg"></Image>
 ```
@@ -52,11 +52,10 @@ and so the layout shift begins...
 ### Output
 
 
+import Image from '../../components/AstroImage.astro'
+import blogPlaceholderAboutImage from '../../images/blog-placeholder-about.jpg'
 
-
-import Image from '../../components/Image.astro'
-
-<Image src="/blog-placeholder-about.jpg"></Image>
+<Image src={blogPlaceholderAboutImage} alt="placeholder image"></Image>
 
 Images are not supported by now, or are they?
 

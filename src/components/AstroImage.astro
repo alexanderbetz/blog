@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets'
+
+type Props = {
+    src: any // string | ImageMetadata | Promise<{ default: ImageMetadata; }>
+    alt: string
+}
+
+const props = Astro.props
+---
+
+<astro-image>
+    <div class="py-[1rem]">
+        <Image
+            {...props}
+            class="mx-auto pb-[calc(1rem_-_mod(calc(100%_/_var(--img-aspect-ratio)),1rem))]" />
+    </div>
+</astro-image>
+
+<script>
+    class AstroImage extends HTMLElement {
+        constructor() {
+            super()
+            const img = this.querySelector('img')
+
+            if(img) {
+                img?.style.setProperty('--img-aspect-ratio', (img.width / img.height).toString())
+                }
+            }
+        }
+
+        customElements.define('astro-image', AstroImage)
+</script>

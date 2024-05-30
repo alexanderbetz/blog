@@ -4,9 +4,11 @@ import { getCollection } from 'astro:content'
 import FormattedDate from '../components/FormattedDate.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 
-const posts = (await getCollection('blog')).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-)
+const posts = (await getCollection('blog'))
+    .filter(p => import.meta.env.PROD ? !p.data.hiddenInProduction : true)
+    .sort(
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    )
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -20,6 +22,7 @@ const posts = (await getCollection('blog')).sort(
             posts.map((post) => (
                 <li>
                     <a href={`/blog/${post.slug}/`}>
+                        {post.data.hiddenInProduction && <span>[dev-only]</span>}
                         <FormattedDate date={post.data.pubDate} />
                         -
                         <span class="font-bold">{post.data.title}</span>

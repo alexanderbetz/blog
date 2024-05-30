@@ -36,6 +36,12 @@
     --code-fonts: monospace;
   }
 
+  body, body.palette-2 {
+    --head-fonts: 'Times New Roman';
+    --body-fonts: 'Times New Roman';
+    --code-fonts: monospace;
+  }
+
   /* Set headings to baseline */
   h1, h2, h3, h4, h5, h6 {
     --baselines: 3;
@@ -126,13 +132,19 @@
     margin-top: 1rem;
     padding: 1rem;
     white-space: pre;
-    white-space: pre-wrap;
+    /*white-space: pre-wrap;*/
     word-break: break-all;
     word-wrap: break-word;
   }
 
   code {
     line-height: 1rem;
+  }
+
+  p code {
+    font-size: 1rem;
+    background-color: rgba(245, 245, 215, 0.5);
+    color: black;
   }
 
   kbd {
@@ -271,6 +283,11 @@
 
   th, td {
     padding: 0;
+  }
+
+  img {
+    position: relative;
+    top: 4%;
   }
 
   input[type='range'].color-picker {

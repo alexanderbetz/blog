@@ -6,7 +6,6 @@ pubDate: 'May 30 2024'
 readTime: '4 minutes'
 ---
 
-
 import Image from '../../components/AstroImage.astro'
 import designInspirationImage from '../../images/design-inspiration.jpg'
 import responsiveImage from '../../images/responsive-image.gif'
@@ -72,7 +71,8 @@ const { src, ...props } = Astro.props
 ```
 
 At first, `mb-[calc(1rem_...` might be overwhelming. But it essentially only calculates the
-remaining space to fill a full line. This even enables **responsive images**. How cool is that?
+remaining space to fill a full line. And since margins and paddings are based on container widths, we need some reference to the height.
+Here I do this by setting the aspect-ratio as CSS variable. This even enables **responsive images**. How cool is that?
 
 Here you have a quick demonstration of what's going on.
 

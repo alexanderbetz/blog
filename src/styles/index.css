@@ -156,9 +156,8 @@
   }
 
   blockquote {
-
     p {
-      border-left: 0.15rem solid blue;
+      border-left: 0.15rem solid hsl(var(--color));
       font-style: italic;
       padding-left: 1rem;
       padding-bottom: calc(calc(var(--beneath) * 1rem) - calc(calc(calc(var(--baselines) * 1rem) - 1cap) / 2));

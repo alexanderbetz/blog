@@ -1,0 +1,26 @@
+---
+title: 'Migrating to nvim'
+description: ''
+pubDate: 'June 5 2024'
+slug: 'migration-to-nvim'
+---
+
+import Image from '../../components/AstroImage.astro'
+
+Why? Not only because I want a new challenge, furthermore I want to use the same editor for everything regarding text editing. I am just sick of switching IDEs for different projects. Additionally, I want to get rid of poor performance, waiting times while indexing and so on...
+
+But isn't everybody afraid of vim and its shortcuts?
+
+import CannotExitVimImage from '../../images/cannot-exit-vim.webp'
+
+<Image src={CannotExitVimImage} alt="Cannot close vim meme" />
+
+Not being able to simply quit vim by <kbd>Ctrl + C</kbd> is frustrating at first. But once you put just a little more affort into it, you might recognize **vim is made for typing**. It is made for keyboard-use only and this in the end is what makes typing so fast. There is no mouse I have to move my hand back and forth.
+
+Right now this is my second day with nvim. I did begin with [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) and today after a few hours I managed to get [harpoon](https://github.com/ThePrimeagen/harpoon) working.
+
+For those who don't know *harpoon* yet, imagine a basic text editor with tabs for every opened file. nvim doesn't have that by default. That is exactly what *harpoon* does. It lets you switch between open files (buffers as called in nvim context).
+
+I did already write this post in nvim. And although I am not in too deep in the nvim game, I already start feeling getting more and more used to it. Commenting and moving code still sucks though.
+
+My personal nvim config is available [here](https://github.com/alexanderbetz/nvim-config).

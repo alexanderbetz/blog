@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
 import FormattedDate from '../../components/FormattedDate.astro'
+import ReactionButton from '../../components/ReactionButton.astro'
 import BlogPost from '../../layouts/BaseLayout.astro'
 
 export async function getStaticPaths() {
@@ -26,6 +27,8 @@ const { Content } = await post.render()
         <FormattedDate date={post.data.pubDate}></FormattedDate>
             </span>
         {post.data.readTime && <span>- {post.data.readTime}</span>}
+        <span>-</span>
+        <ReactionButton slug={post.slug}></ReactionButton>
     </p>
 
     <div class="flex flex-col">

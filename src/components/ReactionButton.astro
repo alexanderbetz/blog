@@ -1,0 +1,68 @@
+---
+const { slug = '' } = Astro.props;
+---
+
+<button class="like-btn font-bold bg-clip-text text-transparent underline active:scale-90 transition duration-[125ms]" data-slug={slug}>
+    Like
+    <span class="like-count text-primary"></span>
+</button>
+
+<div ></div>
+
+<style>
+.like-btn {
+    background-image: linear-gradient(90deg, hsl(0, 78%, 40%), hsl(60, 78%, 40%), hsl(120, 78%, 40%), hsl(180, 78%, 40%), hsl(240, 78%, 40%), hsl(300, 78%, 40%), hsl(0, 78%, 40%));
+    background-size: 200px;
+    background-repeat: repeat-x;
+}
+</style>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2" is:inline></script>
+
+<script>
+let supabase
+const likeBtn = document.querySelector('.like-btn')
+const likeCount = document.querySelector('.like-count')
+const slug = likeBtn?.dataset.slug
+const localStorageKey = 'reactions.' + slug
+let reactionPoints = parseInt(localStorage.getItem(localStorageKey) ?? '0') ?? 0
+let pointsToSend = 0
+const hitSound = new Audio('/typewriter-hit.wav')
+const hueInt = parseInt(localStorage.getItem('hue') || '232')
+let backgroundPositionX = 200 / 360 * hueInt * -1
+likeBtn.style.backgroundPosition = backgroundPositionX + "px 0"
+likeBtn?.addEventListener('mousedown', () => {
+    hitSound.pause()
+    hitSound.currentTime=0
+    hitSound.play()
+})
+likeBtn?.addEventListener('click', async () => {
+    reactionPoints++
+    pointsToSend++
+    localStorage.setItem(localStorageKey, reactionPoints.toString())
+    backgroundPositionX -= 10
+    likeBtn.style.backgroundPosition = backgroundPositionX + "px 0"
+    likeCount.innerText = `(thank you${reactionPoints > 1 ? ' ' + reactionPoints + 'x times' : ''})`
+    saveReactionDebounced(pointsToSend)
+})
+
+async function saveReaction(points) {
+    pointsToSend = 0
+    if(!supabase) {
+        supabase = window.supabase.createClient('https://oehyixwyzxufuhxcpoxj.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9laHlpeHd5enh1ZnVoeGNwb3hqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY4NTQ3NjYsImV4cCI6MjA0MjQzMDc2Nn0.OUBMv9EDu0Le9wnieYXxXC07JtoB03-q2rCv8bf-mbA')
+    }
+
+    const ip = await fetch('https://api.ipify.org?format=json').then(r => r.json())
+    await supabase.from('reactions').insert({ slug, points, ip: ip.ip, user_agent: navigator.userAgent })
+}
+
+function debounce(func, timeout = 300){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
+const saveReactionDebounced = debounce(saveReaction)
+</script>

@@ -1,0 +1,39 @@
+---
+title: 'NPM Packages and the barrel file'
+description: 'Today I found out that barrel files in npm packages do not necessarily make sense, but they just have to be that way'
+pubDate: 'September 20 2024'
+slug: 'npm-packages-and-the-barrel-file'
+---
+
+Ever saw an import like this?
+
+```typescript
+import { t, locale } from '@deckweiss/internationalization'
+```
+
+Usually you would expect that there exists and `index.js` file within the package directory, and there often does. This file is called *barrel file*, since it re-exports all publicly available source code.
+
+There is one specific scenario which does not really make any sense. When using typescript as a package developer, you have to import all files into your *barrel file* with a `.js` extension. Otherwise probably nobody is able to import your code and they will get weird error messages.
+
+Below you find some dos and don'ts.
+```typescript
+// index.ts in your npm package
+
+// Do
+export * from 'translate.js'
+
+// Do
+import { t } from 'translate.js'
+export { t }
+
+// Don't
+export * from 'translate'
+// or
+export * from 'translate.ts'
+
+// Don't
+import { t } from 'translate'
+export { t }
+```
+
+Even this little detail in package development did take me a couple hours to fix. If it did help you, feel free leaving a reaction.
